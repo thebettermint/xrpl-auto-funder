@@ -13,7 +13,7 @@ export const payment = async ({
   network,
 }: {
   wallet: WalletObj;
-  publicAddress: string;
+  publicAddress?: string;
   destinationTag?: number | undefined;
   amount?: string | undefined;
   network: string;
@@ -38,6 +38,9 @@ export const payment = async ({
         Math.max(12000, parseInt(fee) * cushion) -
         parseInt(xrpToDrops('20'))
     );
+
+    if (!publicAddress)
+      throw Error('Destination account not found for payment');
 
     let tx: Payment = {
       TransactionType: 'Payment',

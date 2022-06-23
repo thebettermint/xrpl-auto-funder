@@ -1,8 +1,9 @@
-import { generateAllFundedWallets, isValidNetwork } from './lib/utils';
-import codec from 'ripple-address-codec';
+import { generateAllFundedWallets } from './lib/utils';
 import { payment } from './lib/xrpl/payment';
 import { validNetworks } from './lib/constants/faucets';
 import { WalletObj } from '../types/wallet';
+import { parseInput } from './parse';
+import { wait } from './lib/utils/wait';
 
 const main = async ({
   publicAddress,
@@ -11,62 +12,61 @@ const main = async ({
   amount,
   network,
 }: {
-  publicAddress: string;
+  publicAddress?: string;
   destinationTag?: number;
   xAddress?: string;
   amount?: string;
   network?: string;
 }) => {
-  const input = {
+  let input = parseInput({
     publicAddress: publicAddress,
     destinationTag: destinationTag,
     xAddress: xAddress,
     amount: amount,
     network: network,
-  };
-
-  if (input.network) {
-    let isValid = isValidNetwork(input.network);
-    if (!isValid) return 'not valid network';
-  }
-
-  if (input.xAddress) {
-    let isValid = codec.isValidXAddress(input.xAddress);
-    if (!isValid) return 'not as valid xAdress';
-    let account = codec.xAddressToClassicAddress(input.xAddress);
-
-    input.publicAddress = account.classicAddress;
-    if (account.tag !== false) input.destinationTag = account.tag;
-  }
-
+  });
+  if (input instanceof Error) return input;
   let fundedWallets = await generateAllFundedWallets();
 
   // Wait for wallets to be created and funded before proceeding to payment
-  await new Promise((resolve) => {
-    setTimeout(resolve, 5000);
-  });
+  await wait(5000);
 
-  fundedWallets.forEach(async (wallet: WalletObj) => {
-    let response;
-    let tempNetwork = '';
-    if (input.network) tempNetwork = input.network;
-    if (input.network) {
-      if (wallet.type !== input.network) return;
-      response = await payment(
-        Object.assign({ wallet: wallet }, input, { network: tempNetwork })
-      );
-    }
-    if (!input.network) {
-      validNetworks.forEach(async (network) => {
-        if (wallet.type !== network) return;
-        response = await payment(
-          Object.assign({ wallet: wallet }, input, { network: network })
+  let responseArray = await Promise.all(
+    fundedWallets.map(async (wallet: WalletObj) => {
+      if (input instanceof Error) return;
+      let tempNetwork = input.network ? input.network : '';
+
+      if (input.network) {
+        if (wallet.type !== input.network) return;
+        return await payment(
+          Object.assign({ wallet: wallet }, input, { network: tempNetwork })
         );
-        console.log(response);
-      });
-    }
-  });
-  return;
+      }
+
+      if (!input.network) {
+        let responseArray = await Promise.all(
+          validNetworks.map(async (network) => {
+            if (input instanceof Error) return;
+            if (wallet.type !== network) return;
+            return await payment(
+              Object.assign({ wallet: wallet }, input, { network: network })
+            );
+          })
+        );
+        return responseArray.filter(Boolean);
+      }
+      return;
+    })
+  );
+
+  return responseArray
+    .map((index: any) => {
+      console.log(typeof index);
+      if (!index) return;
+      if (!(index instanceof Array)) return index;
+      return index[0];
+    })
+    .filter(Boolean);
 };
 
 export default main;
