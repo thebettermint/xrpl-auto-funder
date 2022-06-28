@@ -36,7 +36,7 @@ export const payment = async ({
     handledAmount = String(
       parseInt(handledAmount) -
         Math.max(12000, parseInt(fee) * cushion) -
-        parseInt(xrpToDrops('20'))
+        parseInt(xrpToDrops('10'))
     );
 
     if (!publicAddress)
