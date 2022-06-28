@@ -1,9 +1,16 @@
-import { generateAllFundedWallets } from './lib/utils';
+import {
+  generateAllFundedWallets,
+  generateFundedWallet,
+} from './lib/utils/generate';
 import { payment } from './lib/xrpl/payment';
 import { validNetworks } from './lib/constants/faucets';
 import { WalletObj } from '../types/wallet';
-import { parseInput } from './parse';
+import { parseInput } from './lib/utils/parse';
 import { wait } from './lib/utils/wait';
+
+import constants from './lib/constants';
+
+export { generateAllFundedWallets, generateFundedWallet, constants };
 
 const main = async ({
   publicAddress,
