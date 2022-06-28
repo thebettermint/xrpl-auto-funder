@@ -1,7 +1,7 @@
 import index from '../src';
 
-describe('Test funding xrpl wallet', () => {
-  test('testing index with no network defined', async () => {
+describe('funder', () => {
+  test('no-network', async () => {
     let response = await index({
       publicAddress: 'rMfCZhBfR4tRunHaE9jrtdsjF5stuuQ9JB',
       destinationTag: 123,
@@ -9,7 +9,7 @@ describe('Test funding xrpl wallet', () => {
     console.log(response);
   }, 30000);
 
-  /*   test('testing index with a network defined', async () => {
+  test('testnet', async () => {
     let response = await index({
       publicAddress: 'rMfCZhBfR4tRunHaE9jrtdsjF5stuuQ9JB',
       network: 'testnet',
@@ -17,11 +17,27 @@ describe('Test funding xrpl wallet', () => {
     console.log(response);
   }, 30000);
 
-  test('testing index with a network defined and xAddress', async () => {
+  test('nft', async () => {
+    let response = await index({
+      publicAddress: 'rMfCZhBfR4tRunHaE9jrtdsjF5stuuQ9JB',
+      network: 'nft',
+    });
+    console.log(response);
+  }, 30000);
+
+  test('devnet', async () => {
+    let response = await index({
+      publicAddress: 'rMfCZhBfR4tRunHaE9jrtdsjF5stuuQ9JB',
+      network: 'devnet',
+    });
+    console.log(response);
+  }, 30000);
+
+  test('xaddress', async () => {
     let response = await index({
       xAddress: 'T7AhgLLKhQDifNt8FceQ8P6RXFmeoQBLKjTGYaqZnUW5AC7',
       network: 'testnet',
     });
     console.log(response);
-  }, 30000); */
+  }, 30000);
 });
