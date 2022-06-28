@@ -7,11 +7,11 @@ A package to programmically fund xrpl accounts using public faucets
 To get started using this project, install the node package into your project
 
 ```node
-npm install @thebettermint/xrpl-tx-parser
+npm install @thebettermint/xrpl-auto-funder
 ```
 
 ```yarn
-yarn add @thebettermint/xrpl-tx-parser
+yarn add @thebettermint/xrpl-auto-funder
 ```
 
 ## Methods
@@ -19,7 +19,7 @@ yarn add @thebettermint/xrpl-tx-parser
 #### xrplFunder
 
 ```ts
-import xrplFunder from '@thebettermint/auto-xrpl-funder';
+import xrplFunder from '@thebettermint/xrpl-auto-funder';
 
 let response = await xrplFunder(params);
 
@@ -43,7 +43,7 @@ params = {
 #### generateFundedWallet
 
 ```ts
-import { generateFundedWallet } from '@thebettermint/auto-xrpl-funder';
+import { generateFundedWallet } from '@thebettermint/xrpl-auto-funder';
 
 let response = await xrplFunder(network);
 
@@ -61,7 +61,7 @@ network: String;
 #### generateAllFundedWallets
 
 ```ts
-import { generateAllFundedWallets } from '@thebettermint/auto-xrpl-funder';
+import { generateAllFundedWallets } from '@thebettermint/xrpl-auto-funder';
 
 let response = await generateAllFundedWallets();
 
@@ -72,7 +72,7 @@ console.log(response);
 ## Examples
 
 ```ts
-import xrplFunder from '@thebettermint/auto-xrpl-funder';
+import xrplFunder from '@thebettermint/xrpl-auto-funder';
 
 const main = async () => {
   let response = await xrplFunder({
@@ -85,7 +85,7 @@ const main = async () => {
 main();
 ```
 
-[See more examples here](https://github.com/thebettermint/auto-xrpl-funder/blob/main/examples)
+[See more examples here](https://github.com/thebettermint/xrpl-auto-funder/blob/main/examples)
 
 ## Unit Testing
 
@@ -122,11 +122,11 @@ Wietse obviously..
 
 Pull requests for new features, bug fixes, and suggestions are welcome! Please
 create an issue for discussion before working on a substantial change.
-[CONTRIBUTING.md](https://github.com/thebettermint/auto-xrpl-funder/blob/main/CONTRIBUTING.md)
+[CONTRIBUTING.md](https://github.com/thebettermint/xrpl-auto-funder/blob/main/CONTRIBUTING.md)
 
 ## License
 
-[GPL-3.0](https://github.com/thebettermint/auto-xrpl-funder/blob/main/LICENSE)
+[GPL-3.0](https://github.com/thebettermint/xrpl-auto-funder/blob/main/LICENSE)
 
 Copyright 2022 thebettermint
 The GNU General Public License is a free, copyleft license for

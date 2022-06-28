@@ -1,5 +1,5 @@
 {
-  "name": "@thebettermint/auto-xrpl-funder",
+  "name": "@thebettermint/xrpl-auto-funder",
   "version": "0.0.1",
   "description": "A package to programmically fund xrpl accounts using public faucets ",
   "main": "dist/src/index.js",
@@ -7,7 +7,7 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/thebettermint/auto-xrpl-funder.git",
+  "repository": "https://github.com/thebettermint/xrpl-auto-funder.git",
   "author": "interc0der <intercoder@whirled.io>",
   "license": "GPL-3.0",
   "scripts": {

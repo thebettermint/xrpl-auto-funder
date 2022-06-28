@@ -1,4 +1,4 @@
-import xrplFunder from '@thebettermint/auto-xrpl-funder';
+import xrplFunder from '@thebettermint/xrpl-auto-funder';
 
 const main = async () => {
   let response = await xrplFunder({

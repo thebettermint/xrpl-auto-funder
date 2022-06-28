@@ -1,11 +1,13 @@
-import xrplFunder from '@thebettermint/auto-xrpl-funder';
+import {
+  generateAllFundedWallets,
+  generateFundedWallet,
+} from '@thebettermint/xrpl-auto-funder';
 
 const main = async () => {
-  let response = await xrplFunder({
-    xAddress: 'T7AhgLLKhQDifNt8FceQ8P6RXFmeoQBLKjTGYaqZnUW5AC7',
-    network: 'testnet',
-  });
-  console.log(response);
+  let wallet = await generateFundedWallet('testnet');
+  console.log(wallet);
+  let allWallets = await generateAllFundedWallets();
+  console.log(allWallets);
 };
 
 main();
