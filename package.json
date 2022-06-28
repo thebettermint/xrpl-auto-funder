@@ -3,20 +3,33 @@
   "version": "0.0.1",
   "description": "A package to programmically fund xrpl accounts using public faucets ",
   "main": "dist/src/index.js",
+  "types": "dist/types/index.js",
   "files": [
-    "dist/**/*"
+    "dist"
   ],
   "repository": "https://github.com/thebettermint/auto-xrpl-funder.git",
   "author": "interc0der <intercoder@whirled.io>",
   "license": "GPL-3.0",
-  "private": true,
   "scripts": {
     "jest": "jest",
+    "jest:no-network": "jest -t 'funder no-network'",
+    "jest:testnet": "jest -t 'funder no-network'",
+    "jest:nft": "jest -t 'funder no-network'",
+    "jest:devnet": "jest -t 'funder no-network'",
+    "jest:xaddress": "jest -t 'funder no-network'",
+    "jest:single": "jest -t 'generate single'",
+    "jest:genAll": "jest -t 'generate all'",
     "c": "tsc"
   },
   "scriptsComments": {
     "c": "Compiles typescript",
-    "jest": "Runs test for code within /src with current tsconfig and types"
+    "jest:no-network": "Runs single test with no network defined",
+    "jest:testnet": "Runs single test with testnet",
+    "jest:nft": "Runs single test with nft devnet",
+    "jest:devnet": "Runs single test with devnet",
+    "jest:xaddress": "Runs single test with xaddress",
+    "jest:single": "Run single test to check the faucet endpoint",
+    "jest:genAll": "Run single test to check all faucet endpoints"
   },
   "dependencies": {
     "axios": "^0.27.2",
