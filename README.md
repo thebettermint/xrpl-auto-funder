@@ -114,10 +114,6 @@ There are available unit test scripts. Below are the available test scripts and 
   },
 ```
 
-## Thanks
-
-Wietse obviously..
-
 ## Contributing
 
 Pull requests for new features, bug fixes, and suggestions are welcome! Please
