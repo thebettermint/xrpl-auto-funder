@@ -31,12 +31,17 @@ console.log(response);
 
 ```ts
 params = {
-    publicAddress?: String, // Valid "r....." xrpl address to send funds.
-    destinationTag?: Number, // Destination tag for xrpl address to send funds.
-    xAddress?: String, // Valid "x....." xrpl address to send funds. If provided, publicAddress and destinationTag parameters are not required.
-    amount?: String, // Amount to send from the faucet accounts. If left balance, the maximum amount will be sent from the faucet account.
-    network?: String || String[], // Define a network to send the funds. If blank, funds will be send on all of the available networks
-    // Format and all eligible networks => [ 'testnet', 'devnet', 'nft', 'hooks']
+    publicAddress?: String, 
+        // Valid "r....." xrpl address to send funds.
+    destinationTag?: Number, 
+        // Destination tag for xrpl address to send funds.
+    xAddress?: String, 
+        // Valid xAddress to send funds. If provided, publicAddress and destinationTag parameters are not required.
+    amount?: String, 
+        // Amount to send from the faucet accounts. If blank, the maximum amount will be sent from the faucet account.
+    network?: String || String[], 
+        // Define a network to send the funds. If blank, funds will be send on all of the available networks
+        // Format and all eligible networks => [ 'testnet', 'devnet', 'nft', 'hooks']
 }
 ```
 
