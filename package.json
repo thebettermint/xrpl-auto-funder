@@ -14,7 +14,7 @@
     "jest": "jest",
     "jest:no-network": "jest -t 'funder no-network'",
     "jest:testnet": "jest -t 'funder no-network'",
-    "jest:nft": "jest -t 'funder no-network'",
+    "jest:nft": "jest -t 'funder nft'",
     "jest:devnet": "jest -t 'funder no-network'",
     "jest:xaddress": "jest -t 'funder no-network'",
     "jest:single": "jest -t 'generate single'",

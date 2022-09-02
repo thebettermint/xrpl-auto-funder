@@ -6,7 +6,7 @@ import { payment } from './lib/xrpl/payment';
 import { validNetworks } from './lib/constants/faucets';
 import { WalletObj } from '../types/wallet';
 import { parseInput } from './lib/utils/parse';
-import { wait } from './lib/utils/wait';
+import { waitForActivation } from './lib/utils/wait';
 
 import constants from './lib/constants';
 
@@ -33,10 +33,13 @@ const main = async ({
     network: network,
   });
   if (input instanceof Error) return input;
-  let fundedWallets = await generateAllFundedWallets();
+  let fundedWallets: any[] = [];
+  if (input.network)
+    fundedWallets = [await generateFundedWallet(input.network)];
+  if (!input.network) fundedWallets = await generateAllFundedWallets();
 
   // Wait for wallets to be created and funded before proceeding to payment
-  await wait(5000);
+  await waitForActivation(fundedWallets, input);
 
   let responseArray = await Promise.all(
     fundedWallets.map(async (wallet: WalletObj) => {
@@ -68,7 +71,6 @@ const main = async ({
 
   return responseArray
     .map((index: any) => {
-      console.log(typeof index);
       if (!index) return;
       if (!(index instanceof Array)) return index;
       return index[0];

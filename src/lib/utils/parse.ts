@@ -39,6 +39,7 @@ export const parseHooksResponse = (data: {
   code: string;
 }) => {
   return {
+    type: 'hooks',
     data: {
       account: {
         xAddress: '',

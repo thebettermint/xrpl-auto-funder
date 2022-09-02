@@ -8,7 +8,7 @@ export const generateFundedWallet = async (network: string) => {
     if (!url) throw Error(`faucet not found for ${network}`);
     let response = await axios.post(url);
     if (network === 'hooks') return parseHooksResponse(response.data);
-    return response;
+    return Object.assign({ type: network }, response.data);
   } catch (error: any) {
     return Error(error);
   }
@@ -20,8 +20,7 @@ export const generateAllFundedWallets = async () => {
     allFaucets
       .map(async (faucet: string) => {
         let wallet = await generateFundedWallet(faucet);
-        if (!(wallet instanceof Error))
-          return Object.assign({ type: faucet }, wallet.data);
+        if (!(wallet instanceof Error)) return wallet;
         return;
       })
       .filter(Boolean)

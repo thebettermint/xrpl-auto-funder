@@ -70,14 +70,12 @@ export const payment = async ({
 
     let self_balances = await checkBalance(api, signer.classicAddress);
     let destination_balances = await checkBalance(api, tx.Destination);
+    if (self_balances instanceof Error || destination_balances instanceof Error)
+      throw Error('Resulting balances could not be found');
 
     let resultObj = Object.assign(
       { network: network },
-      {
-        accountBalance: self_balances.result,
-        destinationBalance: destination_balances.result,
-      },
-      response.result
+      { hash: response.result.hash }
     );
 
     return resultObj;
