@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "A package to programmically fund xrpl accounts using public faucets ",
   "main": "dist/src/index.js",
-  "types": "dist/types/index.js",
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist"
   ],
@@ -19,7 +19,7 @@
     "jest:xaddress": "jest -t 'funder no-network'",
     "jest:single": "jest -t 'generate single'",
     "jest:genAll": "jest -t 'generate all'",
-    "c": "tsc"
+    "c": "rimraf ./dist && tsc"
   },
   "scriptsComments": {
     "c": "Compiles typescript",

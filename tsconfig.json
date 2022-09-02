@@ -4,6 +4,10 @@
   "include": ["src/**/*", "types/**/*"],
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./dist",
+    "tsBuildInfoFile": "./dist/tsbuildinfo"
   }
 }
