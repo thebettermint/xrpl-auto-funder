@@ -1,6 +1,6 @@
 {
   "name": "@thebettermint/xrpl-auto-funder",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A package to programmically fund xrpl accounts using public faucets ",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
