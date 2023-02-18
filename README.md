@@ -45,7 +45,7 @@ params = {
 ```ts
 import { generateFundedWallet } from '@thebettermint/xrpl-auto-funder';
 
-let response = await xrplFunder(network);
+let response = await generateFundedWallet(network);
 
 // Logging response
 console.log(response);
