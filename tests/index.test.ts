@@ -33,6 +33,14 @@ describe('funder', () => {
     console.log(response);
   }, 30000);
 
+  test('locking', async () => {
+    let response = await index({
+      publicAddress: 'rMfCZhBfR4tRunHaE9jrtdsjF5stuuQ9JB',
+      network: 'locking',
+    });
+    console.log(response);
+  }, 30000);
+
   test('xaddress', async () => {
     let response = await index({
       xAddress: 'T7AhgLLKhQDifNt8FceQ8P6RXFmeoQBLKjTGYaqZnUW5AC7',

@@ -3,6 +3,7 @@ export interface FaucetObjType {
   testnet: string;
   devnet: string;
   nft: string;
+  locking: string;
 }
 
 export interface ServerObjType {
@@ -10,4 +11,5 @@ export interface ServerObjType {
   testnet: string;
   devnet: string;
   nft: string;
+  locking: string;
 }

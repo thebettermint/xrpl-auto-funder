@@ -1,6 +1,6 @@
 {
   "name": "@thebettermint/xrpl-auto-funder",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A package to programmically fund xrpl accounts using public faucets ",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -19,7 +19,11 @@
     "jest:xaddress": "jest -t 'funder no-network'",
     "jest:single": "jest -t 'generate single'",
     "jest:genAll": "jest -t 'generate all'",
-    "c": "rimraf ./dist && tsc"
+    "c": "rimraf ./dist && tsc",
+    "release": "changeset version",
+    "pub:beta": "npm run c && npm publish --tag beta",
+    "pub:next": "npm run c && npm publish --tag next",
+    "pub:release": "npm run c && npm publish"
   },
   "scriptsComments": {
     "c": "Compiles typescript",
